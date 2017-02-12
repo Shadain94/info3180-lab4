@@ -60,6 +60,21 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('home'))
+    
+    
+@app.route('/filelisting')
+def filelisting():
+    if not session.get('logged_in'):
+        abort(401)
+    stuff=[]
+    
+    rootdir = os.getcwd()
+    print rootdir
+    for subdir, dirs, files in os.walk(rootdir + '/app/static/uploads'):
+        for file in files:
+            stuff= stuff + [(os.path.join(subdir, file))]
+            
+    return render_template('filelisting.html', things=stuff)
 
 
 ###

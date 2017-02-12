@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1> These are the Listings</h1>
+<div class="alert alert-info">
+    
+    
+<ul class="flahes">
+{% for item in things %}
+
+<li>{{ item }}</li>
+
+{% endfor %}
+</ul>
+
+    
+</div>
+
+
+
+{% endblock %}
